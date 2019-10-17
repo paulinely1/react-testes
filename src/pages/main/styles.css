@@ -30,3 +30,14 @@
     align-items: center;
     justify-content: center;
 }
+
+.repos-list article a:hover {
+    background: #da552f;
+    color: #fff;
+}
+
+.repos-list .actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}

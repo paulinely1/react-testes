@@ -26,10 +26,14 @@ export default class Main extends Component {
                {repos.map(repo => (
                    <article key={repo.id}>
                        <strong>{repo.name}</strong>
-                       <p>{repo.created_at}</p>
+                       <p>{repo.language}</p>
                        <a href={repo.html_url}>acessar</a>
                    </article>
                ))}
+               <div className="actions">
+                    <button>Anterior</button>
+                    <button>Próxima</button>
+               </div>
            </div>
         )
     }
