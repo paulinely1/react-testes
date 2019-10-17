@@ -3,6 +3,10 @@ import api from '../../services/api';
 
 export default class Main extends Component {
 
+    state = {
+        repos: []
+    }
+    
     componentDidMount(){
         this.loadRepos();
     }
@@ -10,11 +14,22 @@ export default class Main extends Component {
     loadRepos = async () => {
         const response = await api.get('/paulinelymorgan/repos');
         console.log(response.data);
+        this.setState({ repos: response.data });
     }
 
     render(){
+        const {repos} = this.state;
+
         return (
-            <h1>meuaaaaa repos</h1>
+           <div  className="respos-list">
+               {repos.map(repo => (
+                   <article key={repo.id}>
+                       <strong>{repo.name}</strong>
+                       <p>{repo.created_at}</p>
+                       <a href={repo.html_url}>acessar</a>
+                   </article>
+               ))}
+           </div>
         )
     }
 }
