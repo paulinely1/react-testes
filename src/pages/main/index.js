@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import api from '../../services/api';
+import './styles.css'
 
 export default class Main extends Component {
 
@@ -21,7 +22,7 @@ export default class Main extends Component {
         const {repos} = this.state;
 
         return (
-           <div  className="respos-list">
+           <div className="repos-list">
                {repos.map(repo => (
                    <article key={repo.id}>
                        <strong>{repo.name}</strong>
