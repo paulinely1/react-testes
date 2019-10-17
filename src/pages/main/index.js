@@ -7,7 +7,8 @@ import './styles.css'
 export default class Main extends Component {
 
     state = {
-        repos: []
+        repos: [],
+        loading: true
     }
     
     componentDidMount(){
@@ -15,21 +16,20 @@ export default class Main extends Component {
     }
 
     loadRepos = async () => {
-        const response = await api.get('/paulinelymorgan/repos');
-        console.log(response.data);
-        this.setState({ repos: response.data });
+        const response = await api.get('/users/paulinelymorgan/repos');
+        this.setState({ repos: response.data, loading: false });
     }
 
     render(){
-        const {repos} = this.state;
+        const {repos, loading} = this.state;
 
-        return (
-           <div className="repos-list">
+        return (loading ? <div className="repos-list">loading...</div> : 
+            <div className="repos-list">
                {repos.map(repo => (
                    <article key={repo.id}>
                        <strong>{repo.name}</strong>
                        <p>{repo.language}</p>
-                       <Link to={`/repos/${repo.id}`}>acessar</Link>
+                       <Link to={`/repos/${repo.name}`}>acessar</Link>
                    </article>
                ))}
                <div className="actions">
@@ -37,6 +37,6 @@ export default class Main extends Component {
                     <button>Próxima</button>
                </div>
            </div>
-        )
+        );
     }
 }
