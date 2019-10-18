@@ -8,7 +8,7 @@ export default class Main extends Component {
 
     state = {
         repos: [],
-        gitUser: 'diego3g',
+        gitUser: 'paulinelymorgan',
         loading: true
     }
     
