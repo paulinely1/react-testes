@@ -7,25 +7,25 @@ import './styles.css';
 export default class Repo extends Component{
     state = {
         repo: {},
-        id: 0,
+        repoName: 0,
         loading: true
     }
 
     async componentDidMount(){
-        const {id} = this.props.match.params;
+        const {gitUser, repoName} = this.props.match.params;
 
-        const response = await api.get(`/repos/paulinelymorgan/${id}`);
-        this.setState({ repo: response.data, id, loading: false });
+        const response = await api.get(`/repos/${gitUser}/${repoName}`);
+        this.setState({ repo: response.data, repoName, loading: false });
     }
 
     render(){
-        const {repo, id, loading} = this.state;
+        const {repo, repoName, loading} = this.state;
 
         return (loading ? <div className="repos-list">loading...</div> : 
 
             <div className="repo-details">
                     <h2>{repo.name} ({repo.size})</h2>
-                    <p>id: {id}</p>
+                    <p>repoName/id: {repoName}</p>
                     <p>language: {repo.language}</p>
                     <p>description: {repo.description === null ? "null" : repo.description}</p>
                     <p>watchers: {repo.watchers}</p>

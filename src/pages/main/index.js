@@ -8,7 +8,7 @@ export default class Main extends Component {
 
     state = {
         repos: [],
-        gitUser: 'paulinelymorgan',
+        gitUser: 'diego3g',
         loading: true
     }
     
@@ -26,7 +26,7 @@ export default class Main extends Component {
                    <article key={repo.id}>
                        <strong>{repo.name}</strong>
                        <p>{repo.language}</p>
-                       <Link to={`/repos/${repo.name}`}>acessar</Link>
+                       <Link to={`/${this.state.gitUser}/repos/${repo.name}`}>acessar</Link>
                    </article>
                ))}
                <div className="actions">
