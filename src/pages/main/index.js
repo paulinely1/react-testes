@@ -8,15 +8,12 @@ export default class Main extends Component {
 
     state = {
         repos: [],
+        gitUser: 'paulinelymorgan',
         loading: true
     }
     
-    componentDidMount(){
-        this.loadRepos();
-    }
-
-    loadRepos = async () => {
-        const response = await api.get('/users/paulinelymorgan/repos');
+    async componentDidMount(){
+        const response = await api.get(`/users/${this.state.gitUser}/repos`);
         this.setState({ repos: response.data, loading: false });
     }
 

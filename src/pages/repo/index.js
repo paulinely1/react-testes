@@ -24,16 +24,14 @@ export default class Repo extends Component{
         return (loading ? <div className="repos-list">loading...</div> : 
 
             <div className="repo-details">
-                
                     <h2>{repo.name} ({repo.size})</h2>
                     <p>id: {id}</p>
                     <p>language: {repo.language}</p>
                     <p>description: {repo.description === null ? "null" : repo.description}</p>
                     <p>watchers: {repo.watchers}</p>
                     <div className="actions">
-                    <Link to={'/'}>Voltar</Link>
-                    </div>
-                
+                        <Link to={'/'}>Voltar</Link>
+                    </div>  
             </div>
         );
 

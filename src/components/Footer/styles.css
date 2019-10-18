@@ -1,0 +1,12 @@
+footer#main-footer {
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    font-size: 20px;
+    font-weight: lighter;
+    background: #da552f;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

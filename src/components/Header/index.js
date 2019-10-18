@@ -2,7 +2,7 @@ import React from 'react';
 import './styles.css';
 
 const Header = () => (
-    <header id="main-header">Repositórios Github</header>
+    <header id="main-header">ReactJS APP</header>
 );
 
 export default Header;
