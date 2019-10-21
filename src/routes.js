@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Main from './pages/main';
 import Repo from './pages/repo';
-import Notfound from './pages/Notfound';
+import Notfound from './pages/notfound';
 
 const Routes = () => (
     <BrowserRouter>
