@@ -14,6 +14,19 @@
 
 .news-list article p {
     font-size: 16px;
-    margin-top: 5px;
-    color: #999;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    color: #666;
+}
+
+.news-list article .comments {
+    font-size: 16px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    color: rgb(184, 66, 66);
+}
+
+.news-list article .comments a {
+    text-decoration: none;
+    font-weight: lighter;
 }
