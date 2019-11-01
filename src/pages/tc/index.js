@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 
 import './styles.css';
 
@@ -39,7 +39,7 @@ export default class Repo extends Component{
                        <span><strong>{news_item.title}</strong> em: {(new Date(news_item.create_at).getDate())+'/'+(new Date(news_item.create_at).getMonth()+1)}</span>
                        <p>{news_item.tickers}</p>
                        <div className="post__content" dangerouslySetInnerHTML={{__html: news_item.content}}></div>
-                       <Link onClick={this.getComments(`${news_item.id}?limit=1000&since=0`)}><span className="comments">comentários ({news_item.comments})</span></Link>
+                       <span className="comments"><button>comentários ({news_item.comments})</button></span>
                    </article>
                ))}
                <div className="actions">
