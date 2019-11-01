@@ -1,0 +1,19 @@
+.news-list {
+    max-width: 700px;
+    margin: 25px auto 0;
+    padding: 0 20px;
+}
+
+.news-list article {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.news-list article p {
+    font-size: 16px;
+    margin-top: 5px;
+    color: #999;
+}

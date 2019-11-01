@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import api from '../../services/api';
 import { Link } from 'react-router-dom';
 
 import './styles.css'
 
 export default class Main extends Component {
-
+    
     state = {
         repos: [],
         gitUser: 'paulinelymorgan',
@@ -13,7 +12,8 @@ export default class Main extends Component {
     }
     
     async componentDidMount(){
-        const response = await api.get(`/users/${this.state.gitUser}/repos`);
+        const Api = require('../../services/api');
+        const response = await Api.git.get(`/users/${this.state.gitUser}/repos`);
         this.setState({ repos: response.data, loading: false });
     }
 
