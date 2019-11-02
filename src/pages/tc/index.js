@@ -23,7 +23,7 @@ export default class Repo extends Component{
     async getComments(e, id){
         const { idea_id } = this.state;
 
-        if (idea_id) {
+        if (idea_id === id) {
             this.setState({ comments: [], idea_id: null});
         } else {
             const Api = require('../../services/api'); 
