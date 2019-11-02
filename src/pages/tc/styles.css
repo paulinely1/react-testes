@@ -19,12 +19,14 @@
     color: #666;
 }
 
-.news-list article .comments a {
-    text-decoration: none;
-    font-weight: lighter;
-    font-size: 16px;
-    margin-top: 80px;
-    color: #7c9b29 ;
+.news-list article comment {
+    font-size: 12px;
+    border: 1px solid rgba(167, 73, 73, 0.37);
+    background: rgba(167, 73, 73, 0.37);
+    border-radius: 3px;
+    padding: 10px;
+    margin-top: 5px;
+    display: flex;
 }
 
 .news-list .actions {

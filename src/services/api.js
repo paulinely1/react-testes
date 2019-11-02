@@ -4,7 +4,7 @@ const git = axios.create({
     baseURL: 'https://api.github.com'
 });
 
-const token = 't4gqy3kyypghijwm4yhpxgny9w';
+const token = 'qhf5d39y778rxeu8oq4qefik4c';
 
 const tc_ideas = axios.create({
     baseURL: 'https://tc.tradersclub.com.br/ideas/api/list/user/',

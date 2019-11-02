@@ -9,7 +9,7 @@ export default class Repo extends Component{
         loading: true,
         news: {},
         comments: {},
-        comments_loading: true
+        idea_id: null
     }
 
     async componentDidMount(){
@@ -20,17 +20,21 @@ export default class Repo extends Component{
         this.setState({ news: response.data, loading: false });
     }
 
-    async getComments(uri){
-        const Api = require('../../services/api');
-        //const {idea_id} = this.props.match.params;
-        //const response = await Api.tc_comments.get(`${idea_id}?limit=1000&since=0`);
-        const response = await Api.tc_comments.get(uri);
-        this.setState({ comments: response.data, comments_loading: false });
-        console.log(this.state.comments);
+    async getComments(e, id){
+        const { idea_id } = this.state;
+
+        if (idea_id) {
+            this.setState({ comments: [], idea_id: null});
+        } else {
+            const Api = require('../../services/api'); 
+            const response = await Api.tc_comments.get(`${id}?limit=1000&since=0`);
+            this.setState({ comments: response.data, idea_id: id});
+            // console.log(response.data);
+        }
     } 
 
     render(){
-        const {news, loading} = this.state;
+        const {loading, news, comments, idea_id} = this.state;
 
         return (loading ? <div className="repos-list">loading...</div> : 
             <div className="news-list">
@@ -39,9 +43,16 @@ export default class Repo extends Component{
                        <span><strong>{news_item.title}</strong> em: {(new Date(news_item.create_at).getDate())+'/'+(new Date(news_item.create_at).getMonth()+1)}</span>
                        <p>{news_item.tickers}</p>
                        <div className="post__content" dangerouslySetInnerHTML={{__html: news_item.content}}></div>
-                       <span className="comments"><button>comentários ({news_item.comments})</button></span>
+                       <button onClick={(e) => this.getComments(e, news_item.id)}>comentários ({news_item.comments})</button>
+                       <br/>
+                       {idea_id === news_item.id ? comments.map(comment => (
+                           <comment key={comment.id}>
+                               <span>{comment.content}</span>
+                           </comment>
+                       )) : ""}
                    </article>
                ))}
+               {/* {console.log("size: "+comments.lenght)} */}
                <div className="actions">
                     <button>Anterior</button>
                     <button>Próxima</button>
