@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
+import api from '../../services/api';
 
 import './styles.css';
 
@@ -11,10 +12,9 @@ export default class Repo extends Component{
     }
 
     async componentDidMount(){
-        const Api = require('../../services/api');
         const {gitUser, repoName} = this.props.match.params;
 
-        const response = await Api.git.get(`/repos/${gitUser}/${repoName}`);
+        const response = await api.get(`/repos/${gitUser}/${repoName}`);
         this.setState({ repo: response.data, repoName, loading: false });
     }
 
