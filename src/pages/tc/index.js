@@ -24,12 +24,12 @@ export default class Repo extends Component{
         const { idea_id } = this.state;
 
         if (idea_id === id) {
-            this.setState({ comments: [], idea_id: null});
+            this.setState({ comments: {}, idea_id: null});
         } else {
             const Api = require('../../services/api'); 
             const response = await Api.tc_comments.get(`${id}?limit=1000&since=0`);
             this.setState({ comments: response.data, idea_id: id});
-            // console.log(response.data);
+            console.log(response.data);
         }
     } 
 
@@ -43,16 +43,17 @@ export default class Repo extends Component{
                        <span><strong>{news_item.title}</strong> em: {(new Date(news_item.create_at).getDate())+'/'+(new Date(news_item.create_at).getMonth()+1)}</span>
                        <p>{news_item.tickers}</p>
                        <div className="post__content" dangerouslySetInnerHTML={{__html: news_item.content}}></div>
+                       <br/>
                        <button onClick={(e) => this.getComments(e, news_item.id)}>comentários ({news_item.comments})</button>
                        <br/>
                        {idea_id === news_item.id ? comments.map(comment => (
                            <comment key={comment.id}>
-                               <span>{comment.content}</span>
+                               <span>{comment.content} C: {comment.comments} L: {comment.likes}</span>
                            </comment>
                        )) : ""}
                    </article>
                ))}
-               {/* {console.log("size: "+comments.lenght)} */}
+
                <div className="actions">
                     <button>Anterior</button>
                     <button>Próxima</button>
